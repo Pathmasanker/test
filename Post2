@@ -1,0 +1,25 @@
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const inputValue = event.target.elements.myInput.value.trim();
+  if (inputValue === '') {
+    return;
+  }
+  const valueAsString = inputValue;
+  setValue(valueAsString);
+
+  const data = {
+    name: name,
+    category: category,
+    value: valueAsString,
+  };
+
+  axios.post('/my/api/endpoint', data)
+    .then(response => {
+      console.log(response.data);
+      alert('Success! Response: ' + JSON.stringify(response.data));
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Error: ' + error.message);
+    });
+};
